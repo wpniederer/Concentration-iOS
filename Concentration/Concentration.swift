@@ -40,6 +40,17 @@ class Concentration {
             cards += [card, card]
         }
         //TODO: Shuffle the cards
+        //print("Cards original: \(cards)")
+        for index in cards.indices {
+            cards.swapAt(index, Int(arc4random_uniform(UInt32(cards.count))))
+            if (Int(arc4random_uniform(100)) % 2 == 0) {
+                cards.swapAt(index, cards.count - 1)
+                //print("Cards reversed: \(cards)")
+            } else {
+                cards.swapAt(Int(arc4random_uniform(UInt32(cards.count))), Int(arc4random_uniform(UInt32(cards.count))))
+                //print("Cards rando changed: \(cards)")
+            }
+        }
     }
 }
 
