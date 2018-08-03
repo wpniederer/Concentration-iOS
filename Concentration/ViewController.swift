@@ -9,7 +9,6 @@
 import UIKit
 
 class ViewController: UIViewController {
-    // numbers of pairs of card are intimitely tied to the UI
     private lazy var game = Concentration(numberOfPairsOfCards: numberOfPairsOfCards)
     
     private var numberOfPairsOfCards: Int {
@@ -18,17 +17,14 @@ class ViewController: UIViewController {
         }
     }
     
-    private(set) var flipCount = 0 {
-        didSet {
-            flipCountLabel.text = "Flips: \(flipCount)"
-        }
-    }
+    
     @IBOutlet private var cardButtons: [UIButton]!
     
     @IBOutlet private weak var flipCountLabel: UILabel!
     
     @IBAction private func touchCard(_ sender: UIButton) {
-        flipCount += 1
+        game.incrementFlipCount(newGame: false)
+        updateFlipCountLabel()
         if let cardNumber = cardButtons.index(of: sender) {
             game.chooseCard(at: cardNumber)
             updateViewFromModel()
@@ -38,13 +34,16 @@ class ViewController: UIViewController {
     }
     // Need to reset all cards, reset flipCount, and reinitilize array with all emojis
     @IBAction private func startNewGame(_ sender: UIButton) {
-        flipCount = 0
+        game.incrementFlipCount(newGame: true)
+        updateFlipCountLabel()
         addThreeThemes()
         addTheme(withName: "halloween", forEmojis: ["🦇", "😱", "🙀", "😈", "🎃", "👻", "🍭", "🍬", "🍎"])
         emojiChoices = themeChoices[selectRandomTheme()]!
         game = Concentration(numberOfPairsOfCards: (cardButtons.count + 1) / 2)
         updateViewFromModel()
     }
+    
+    @IBOutlet weak var scoreCountLabel: UILabel!
     
     private func updateViewFromModel() {
         for index in cardButtons.indices {
@@ -63,9 +62,7 @@ class ViewController: UIViewController {
     
     private var themeChoices = ["halloween":  ["🦇", "😱", "🙀", "😈", "🎃", "👻", "🍭", "🍬", "🍎"]]
     
-     // key is theme name, value is an array of the emojis
     private func addTheme(withName themeName: String, forEmojis emojiChoices: [String]) {
-        //themeChoices
         themeChoices[themeName] = emojiChoices
     }
     
@@ -90,6 +87,9 @@ class ViewController: UIViewController {
         return emoji[card] ?? "?"
     }
    
+    private func updateFlipCountLabel() {
+        flipCountLabel.text = "Flips: \(game.flipCount)"
+    }
 }
 
 extension Int {

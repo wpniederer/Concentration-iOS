@@ -8,8 +8,10 @@
 
 import Foundation
 
-class Concentration {
+struct Concentration {
     private(set) var cards = [Card]()
+    var flipCount = 0
+    var scoreCount = 0
     
     private var indexOfOneAndOnlyFaceUpCard: Int? {
         get {
@@ -22,7 +24,7 @@ class Concentration {
         }
     }
     
-    func chooseCard(at index: Int) {
+    mutating func chooseCard(at index: Int) {
         assert(cards.indices.contains(index), "Concentration.chooseCard(at: \(index)): chosen index not in cards")
         if !cards[index].isMatched {
             if let matchIndex = indexOfOneAndOnlyFaceUpCard, matchIndex != index {
@@ -45,21 +47,24 @@ class Concentration {
             let card = Card()
             cards += [card, card]
         }
-        //TODO: Shuffle the cards
-        //print("Cards original: \(cards)")
+        // shuffle cards
         for index in cards.indices {
             cards.swapAt(index, cards.count.arc4random)
             if (100.arc4random % 2 == 0) {
                 cards.swapAt(index, cards.count - 1)
-                //print("Cards reversed: \(cards)")
             } else {
                 cards.swapAt(cards.count.arc4random, cards.count.arc4random)
-                //print("Cards rando changed: \(cards)")
             }
         }
     }
     
-
+    mutating func incrementFlipCount(newGame: Bool){
+        if newGame == true {
+            flipCount = 0
+        } else {
+            flipCount += 1
+        }
+    }
     
     
 }
