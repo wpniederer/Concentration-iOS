@@ -11,7 +11,7 @@ import Foundation
 struct Concentration {
     private(set) var cards = [Card]()
     var flipCount = 0
-    var scoreCount = 0
+    var totalScore = 0
     
     private var indexOfOneAndOnlyFaceUpCard: Int? {
         get {
@@ -24,6 +24,7 @@ struct Concentration {
         }
     }
     
+    // choose and score card here?
     mutating func chooseCard(at index: Int) {
         assert(cards.indices.contains(index), "Concentration.chooseCard(at: \(index)): chosen index not in cards")
         if !cards[index].isMatched {
@@ -32,12 +33,24 @@ struct Concentration {
                 if cards[matchIndex] == cards[index]{
                     cards[matchIndex].isMatched = true
                     cards[index].isMatched = true
+                    totalScore += 2
+                //otherwise the cards didn't match, and penalize for each card that has been seen
+                } else {
+                    if cards[index].hasBeenSeen {
+                        totalScore -= 1
+                    }
+                    if cards[matchIndex].hasBeenSeen {
+                        totalScore -= 1
+                    }
+                    cards[matchIndex].hasBeenSeen = true
+                    cards[index].hasBeenSeen = true
                 }
                 cards[index].isFaceUp = true
             } else {
                 // either no cards or 2 cards are face up
                 indexOfOneAndOnlyFaceUpCard = index
             }
+            
         }
     }
     
@@ -47,15 +60,15 @@ struct Concentration {
             let card = Card()
             cards += [card, card]
         }
-        // shuffle cards
-        for index in cards.indices {
-            cards.swapAt(index, cards.count.arc4random)
-            if (100.arc4random % 2 == 0) {
-                cards.swapAt(index, cards.count - 1)
-            } else {
-                cards.swapAt(cards.count.arc4random, cards.count.arc4random)
-            }
-        }
+//        // shuffle cards
+//        for index in cards.indices {
+//            cards.swapAt(index, cards.count.arc4random)
+//            if (100.arc4random % 2 == 0) {
+//                cards.swapAt(index, cards.count - 1)
+//            } else {
+//                cards.swapAt(cards.count.arc4random, cards.count.arc4random)
+//            }
+//        }
     }
     
     mutating func incrementFlipCount(newGame: Bool){

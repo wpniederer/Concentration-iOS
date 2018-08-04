@@ -24,9 +24,10 @@ class ViewController: UIViewController {
     
     @IBAction private func touchCard(_ sender: UIButton) {
         game.incrementFlipCount(newGame: false)
-        updateFlipCountLabel()
+        updateFlipCountAndScoreCountLabel()
         if let cardNumber = cardButtons.index(of: sender) {
             game.chooseCard(at: cardNumber)
+            //game.scoreCards(at: cardNumber, newGame: false)
             updateViewFromModel()
         } else {
             print("Chosen card was not in cardButtons.")
@@ -35,7 +36,8 @@ class ViewController: UIViewController {
     // Need to reset all cards, reset flipCount, and reinitilize array with all emojis
     @IBAction private func startNewGame(_ sender: UIButton) {
         game.incrementFlipCount(newGame: true)
-        updateFlipCountLabel()
+        game.totalScore = 0
+        updateFlipCountAndScoreCountLabel()
         addThreeThemes()
         addTheme(withName: "halloween", forEmojis: ["🦇", "😱", "🙀", "😈", "🎃", "👻", "🍭", "🍬", "🍎"])
         emojiChoices = themeChoices[selectRandomTheme()]!
@@ -87,8 +89,9 @@ class ViewController: UIViewController {
         return emoji[card] ?? "?"
     }
    
-    private func updateFlipCountLabel() {
+    private func updateFlipCountAndScoreCountLabel() {
         flipCountLabel.text = "Flips: \(game.flipCount)"
+        scoreCountLabel.text = "Score: \(game.totalScore)"
     }
 }
 

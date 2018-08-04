@@ -145,16 +145,16 @@
                                     <action selector="startNewGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RBZ-kP-sC9"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flips: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Vv-b6-Mw6">
-                                <rect key="frame" x="0.0" y="597" width="123.66666666666667" height="48"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <color key="textColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z99-f1-uen">
-                                <rect key="frame" x="251" y="597" width="142.66666666666663" height="48"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z99-f1-uen">
+                                <rect key="frame" x="251.33333333333337" y="597" width="142.66666666666663" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flips: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Vv-b6-Mw6">
+                                <rect key="frame" x="20.000000000000007" y="597" width="123.66666666666669" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <color key="textColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -162,13 +162,12 @@
                         <constraints>
                             <constraint firstItem="KH7-Bw-4Am" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="0WP-GF-LOz"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="2BJ-6L-w0z" secondAttribute="bottom" constant="20" id="7uQ-j5-eDp"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="z99-f1-uen" secondAttribute="trailing" constant="20" id="8mo-Rb-w7i"/>
+                            <constraint firstItem="z99-f1-uen" firstAttribute="leading" relation="lessThanOrEqual" secondItem="8Vv-b6-Mw6" secondAttribute="trailing" constant="107.67" id="DVU-u8-jTD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="z99-f1-uen" secondAttribute="bottom" constant="91" id="Kcq-hQ-jl4"/>
-                            <constraint firstItem="z99-f1-uen" firstAttribute="leading" secondItem="8Vv-b6-Mw6" secondAttribute="trailing" constant="127.33333333333333" id="ONU-nN-MrF"/>
+                            <constraint firstItem="8Vv-b6-Mw6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="SbX-CV-pTx"/>
                             <constraint firstItem="KH7-Bw-4Am" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="TDn-LH-PdL"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="KH7-Bw-4Am" secondAttribute="trailing" constant="16" id="X1s-Tn-nbK"/>
-                            <constraint firstItem="z99-f1-uen" firstAttribute="leading" secondItem="8Vv-b6-Mw6" secondAttribute="trailing" constant="127.33333333333333" id="bed-1P-TBm"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="z99-f1-uen" secondAttribute="trailing" constant="20.333333333333371" id="d1j-Wf-BJW"/>
-                            <constraint firstItem="8Vv-b6-Mw6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="eAb-IV-OjT"/>
                             <constraint firstItem="2BJ-6L-w0z" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="jpN-tD-B85"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="8Vv-b6-Mw6" secondAttribute="bottom" constant="91" id="qfh-zh-RnH"/>
                             <constraint firstItem="2BJ-6L-w0z" firstAttribute="top" relation="greaterThanOrEqual" secondItem="KH7-Bw-4Am" secondAttribute="bottom" constant="8" symbolic="YES" id="swq-so-ykg"/>
@@ -194,7 +193,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-730" y="49"/>
+            <point key="canvasLocation" x="-730.43478260869574" y="48.913043478260875"/>
         </scene>
     </scenes>
 </document>
