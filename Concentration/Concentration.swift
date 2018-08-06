@@ -60,15 +60,15 @@ struct Concentration {
             let card = Card()
             cards += [card, card]
         }
-//        // shuffle cards
-//        for index in cards.indices {
-//            cards.swapAt(index, cards.count.arc4random)
-//            if (100.arc4random % 2 == 0) {
-//                cards.swapAt(index, cards.count - 1)
-//            } else {
-//                cards.swapAt(cards.count.arc4random, cards.count.arc4random)
-//            }
-//        }
+        // shuffle cards
+        for index in cards.indices {
+            cards.swapAt(index, cards.count.arc4random)
+            if (100.arc4random % 2 == 0) {
+                cards.swapAt(index, cards.count - 1)
+            } else {
+                cards.swapAt(cards.count.arc4random, cards.count.arc4random)
+            }
+        }
     }
     
     mutating func incrementFlipCount(newGame: Bool){
